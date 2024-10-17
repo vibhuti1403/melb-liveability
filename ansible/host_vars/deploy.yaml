@@ -1,0 +1,8 @@
+# ****************************** Common vars ******************************
+availability_zone: melbourne-qh2-uom
+instance_network: qh2-uom #change later
+instance_flavor: uom.mse.2c9g
+instance_image: aaddbad8-87d7-4ed7-9382-409b9bc42ca6 # NeCTAR Ubuntu 18.04 LTS (Bionic) amd64 (with Docker)
+instance_key_name: NectarGroupKey
+wm_inventory_file: "./inventory/wm_inventory_file.ini"
+image_facts: []

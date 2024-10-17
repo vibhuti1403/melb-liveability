@@ -1,0 +1,8 @@
+{
+    "_id": "_design/getHospitalData",
+    "views": {
+        "getHospitalData":{
+            "map":"function(doc){emit(doc.properties_postcode,{hospital_name:doc.properties_hospital_name,long:doc.properties_long, lat:doc.properties_lat, postcode:doc.properties_postcode,bed_cat:doc.properties_bed_cat,no_beds:doc.properties_beds})}"
+        }
+    }
+}

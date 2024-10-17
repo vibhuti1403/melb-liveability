@@ -1,0 +1,53 @@
+couchdb_image: couchdb:latest
+couchdb_user: couchdb
+couchdb_pass: couchdb
+couchdb_VERSION: '3.0.0'
+couchdb_cookie: 'rAndomLongAssCookie'
+couchdb_container_name: 'couchdb'
+couchdb_port: 5984
+erlang_port: 9100
+cluster_com_port: 4369
+couch_tables:
+  - name: housing_rent_aff
+    design_name: getLatestRAI
+    view: getLatestRAI.json
+  - name: env_pollutant
+    design_name: getEnvData
+    view: getEnvData.json
+  - name: sch_rank
+    design_name: getTopSchoolInfo
+    view: getTopSchoolInfo.json
+  - name: ent_cafe_seating
+    design_name: getEntCafeData
+    view: getEntCafeData.json
+  - name: ent_bar_seating
+    design_name: getEntBarData
+    view: getEntBarData.json
+  - name: ent_sports
+    design_name: getSportsData
+    view: getSportsData.json
+  - name: ent_car_park
+    design_name: getEntCarParkData
+    view: getEntCarParkData.json
+  - name: health_no_beds
+    design_name: getHospitalData
+    view: getHospitalData.json
+  - name: postcode_bbox
+    design_name: getPostCode_BBox
+    view: getPostCode_BBox.json
+  - name: archived_tweets
+    design_name: sentiments_count
+    view: archived_tweets.json
+  - name: tweets
+    design_name: sentiment_view
+    view: tweets.json
+  - name: bulk_tweets
+    design_name: sentiment_view_bulk_tweets
+    view: bulk_tweets.json
+  - name: liveability
+    design_name: liveability
+    view: liveabilityView.json
+  - name: realtime_tweets
+  
+  
+

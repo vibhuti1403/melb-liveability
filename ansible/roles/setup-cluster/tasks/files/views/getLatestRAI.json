@@ -1,0 +1,11 @@
+{
+    "_id":"_design/getLatestRAI",
+    "views":{
+       "getLatestRAI":{
+          "map":"function(doc){emit(doc.properties_geography_name, {postcode:doc.properties_geography_name,latest_rai:doc.properties_rai_national_total_2021_q2,bbox:doc.bbox})}"
+       },
+       "getRAI":{
+          "map":"function(doc){\n  emit(doc.properties_geography_name,{postcode:doc.properties_geography_name,\"2018Q1\":doc.properties_rai_national_total_2018_q1,\"2018Q2\":doc.properties_rai_national_total_2018_q2,\"2018Q3\":doc.properties_rai_national_total_2018_q3,\"2018Q4\":doc.properties_rai_national_total_2018_q4,\"2019Q1\":doc.properties_rai_national_total_2019_q1,\"2019Q2\":doc.properties_rai_national_total_2019_q2,\"2019Q3\":doc.properties_rai_national_total_2019_q3,\"2019Q4\":doc.properties_rai_national_total_2019_q4,\"2020Q1\":doc.properties_rai_national_total_2020_q1,\"2020Q2\":doc.properties_rai_national_total_2020_q2,\"2020Q3\":doc.properties_rai_national_total_2020_q3,\"2020Q4\":doc.properties_rai_national_total_2020_q4,\"2021Q1\":doc.properties_rai_national_total_2021_q1,\"2021Q2\":doc.properties_rai_national_total_2021_q2})\n  \n}"
+       }
+    }
+ }

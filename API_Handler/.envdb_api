@@ -1,0 +1,4 @@
+DBuser='couchdb'
+DBpwd='couchdb'
+DBurl = '45.113.235.189:5984/'
+categories = Environment , Housing , Education , Health care , Entertainment

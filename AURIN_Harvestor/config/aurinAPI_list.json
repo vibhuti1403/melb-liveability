@@ -1,0 +1,8 @@
+{
+   "housing_rent_aff":"http://openapi.aurin.org.au/wfs?version=1.1.0&request=GetFeature&typeNames=aurin:datasource-SGSEP-UoM_AURIN_DB_sgs_rai_index_national_total_2021&outputFormat=json",
+   "env_pollutant":"http://openapi.aurin.org.au/wfs?version=1.1.0&request=GetFeature&typeNames=aurin:datasource-AU_Govt_DEE-UoM_AURIN_DB_national_pollutant_inventory_facilities_2018&outputFormat=json",
+   "ent_cafe_seating":"https://openapi.aurin.org.au/wfs?version=1.1.0&request=GetFeature&typeNames=aurin:datasource-VIC_LGovt_COM-UoM_AURIN_DB_com_clue_cafe_restaurant_bistro_seats_2017&outputFormat=json",
+   "ent_bar_seating":"https://openapi.aurin.org.au/wfs?version=1.1.0&request=GetFeature&typeNames=aurin:datasource-VIC_LGovt_COM-UoM_AURIN_DB_com_clue_bars_pubs_patron_capacity_2017&outputFormat=json",
+   "ent_sports":"https://openapi.aurin.org.au/wfs?version=1.1.0&request=GetFeature&typeNames=aurin:datasource-VIC_Govt_DHHS-UoM_AURIN_DB_vic_sport_and_recreation_2015&outputFormat=json",
+   "ent_car_park":"https://openapi.aurin.org.au/wfs?version=1.1.0&request=GetFeature&typeNames=aurin:datasource-VIC_LGovt_COM-UoM_AURIN_DB_com_clue_offstreet_car_parking_2017&outputFormat=json"
+}

@@ -1,0 +1,88 @@
+- name: setup couchdb cluster
+  become: yes
+  uri:
+    url: http://{{ groups['masternode'][0] }}:{{couchdb_port}}/_cluster_setup
+    status_code: 201
+    method: POST
+    user: "{{ couchdb_user }}"
+    password:  "{{ couchdb_pass }}"
+    force_basic_auth: yes
+    return_content: yes
+    body_format: json
+    body: "{\"action\": \"enable_cluster\", \"bind_address\":\"0.0.0.0\",\
+             \"username\": \"{{ couchdb_user }}\", \"password\":\"{{ couchdb_pass }}\", \"port\": \"{{couchdb_port}}\",\
+             \"remote_node\": \"{{ item }}\", \"node_count\": \"{{ groups['database'] | length }}\",\
+             \"remote_current_user\":\"{{ couchdb_user }}\", \"remote_current_password\":\"{{ couchdb_pass }}\"}"
+    headers:
+      Content-Type: "application/json"
+  loop: "{{ groups['workers'] }}"
+
+- name: add nodes to cluster
+  become: yes
+  uri:
+    url: http://{{ groups['masternode'][0] }}:{{couchdb_port}}/_cluster_setup
+    status_code: 201
+    method: POST
+    user: "{{ couchdb_user }}"
+    password:  "{{ couchdb_pass }}"
+    force_basic_auth: yes
+    return_content: yes
+    body_format: json
+    body: "{\"action\": \"add_node\", \"host\":\"{{ item }}\",\
+             \"port\": \"{{ couchdb_port }}\", \"username\": \"{{ couchdb_user }}\", \"password\":\"{{ couchdb_pass }}\"}"
+    headers:
+      Content-Type: "application/json"
+  loop: "{{ groups['workers'] }}"
+
+- name: finish setup
+  become: yes
+  uri:
+    url: http://{{ groups['masternode'][0] }}:{{couchdb_port}}/_cluster_setup
+    status_code: 200,201,409
+    method: POST
+    user: "{{ couchdb_user }}"
+    password:  "{{ couchdb_pass }}"
+    force_basic_auth: yes
+    return_content: yes
+    body_format: json
+    body: "{\"action\": \"finish_cluster\"}"
+    headers:
+      Content-Type: "application/json"
+
+- name: Create DB Tables
+  become: yes
+  uri:
+    url: http://{{ groups['masternode'][0] }}:{{couchdb_port}}/{{item.name}}?q=4&n=3
+    status_code: 200,201,409
+    method: PUT
+    user: "{{ couchdb_user }}"
+    password:  "{{ couchdb_pass }}"
+    force_basic_auth: yes
+    return_content: yes
+  loop: "{{couch_tables}}"
+
+- name: Create DB Views
+  become: yes
+  uri: 
+    url: http://{{ groups['masternode'][0] }}:{{couchdb_port}}/{{item.name}}/_design/{{item.design_name}}
+    status_code: 200,201,409
+    method: PUT
+    user: "{{ couchdb_user }}"
+    password:  "{{ couchdb_pass }}"
+    headers:
+      Accept: "application/json"
+      Content-Type: "application/json"
+    body: "{{ lookup('file', 'files/views/'+item.view) }}"
+    body_format: json
+    force_basic_auth: yes
+    return_content: yes
+  register: result
+  loop: "{{couch_tables}}"
+  when: item.design_name is defined
+
+
+- name: Debug
+  debug:
+    var: result
+  
+  

@@ -1,0 +1,8 @@
+{
+    "_id": "_design/getSportsData",
+    "views": {
+        "getSportsData":{
+            "map":"function(doc){emit(doc.properties_postcode, {properties_lat:doc.properties_lat,properties_long:doc.properties_long, sports_played:doc.properties_sportsplayed,bbox:doc.bbox,facility_name: doc.properties_facilityname})}"
+        }
+    }
+}

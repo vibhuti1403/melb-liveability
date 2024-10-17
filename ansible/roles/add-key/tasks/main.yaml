@@ -1,0 +1,13 @@
+---
+- name: copy NectarGroupKey
+  become: yes
+  copy:
+    src: "config/NectarGroupKey.pem"
+    dest: ~/.ssh/NectarGroupKey
+    mode: 0600
+
+- name: add ssh key
+  become: yes
+  shell: |
+    eval "$(ssh-agent)"
+    ssh-add ~/.ssh/NectarGroupKey

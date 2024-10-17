@@ -1,0 +1,8 @@
+{
+    "_id": "_design/getEntCarParkData",
+    "views": {
+        "getEntCarParkData":{
+            "map":"function(doc){emit(doc.post_code, {properties_lat:doc.properties_lat,properties_long:doc.properties_long, parking_type:doc.properties_parking_type,parking_spaces:doc.properties_parking_spaces})}"
+        }
+    }
+}

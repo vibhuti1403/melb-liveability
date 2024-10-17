@@ -1,0 +1,9 @@
+{
+    "_id":"_design/sentiments_count",
+    "views":{
+       "sentiment_archived_tweets":{
+          "reduce":"_count",
+          "map":"function (doc) {\n  if(doc.relevant===true)\n    {emit([doc.category+\"_\"+doc.sentiment]);}\n}"
+       }
+    }
+ }

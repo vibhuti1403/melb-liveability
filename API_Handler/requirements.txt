@@ -1,0 +1,7 @@
+flask
+pandas
+sklearn
+python-dotenv
+couchdb
+flask-cors
+requests

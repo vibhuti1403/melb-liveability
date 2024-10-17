@@ -1,0 +1,25 @@
+- hosts: instances
+  gather_facts: true
+  roles:
+    - role: clone-git-repository
+
+- hosts: masternode
+  vars_files:
+      - host_vars/couchDB.yaml
+  gather_facts: true
+  roles:
+    - role: run-pull-latest-code
+    - role: run-aurin-extractor
+    - role: run-bulk-tweets-extractor
+    - role: run-tweet-harvestor
+    - role: run-flask-server
+    - role: run-react-ui
+
+- hosts: workers
+  vars_files:
+    - host_vars/couchDB.yaml
+  gather_facts: true
+  roles:
+    - role: run-pull-latest-code
+    - role: run-tweet-harvestor
+

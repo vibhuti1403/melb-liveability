@@ -1,0 +1,8 @@
+{
+    "_id": "_design/getEntBarData",
+    "views": {
+        "getEntBarData":{
+            "map":"function(doc){emit(doc.post_code, {properties_lat:doc.properties_lat,properties_long:doc.properties_long, properties_trading_name:doc.properties_trading_name,patrons:doc.properties_number_of_patrons})}"
+        }
+    }
+}

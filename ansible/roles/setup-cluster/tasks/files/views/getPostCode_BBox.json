@@ -1,0 +1,8 @@
+{
+    "_id": "_design/getPostCode_BBox",
+    "views": {
+        "getPostCode_BBox":{
+            "map":"function(doc){emit(doc.post_code, {bbox:doc.bbox})}"
+        }
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "user" : "couchdb",
+    "password" : "couchdb",
+    "url" : "http://45.113.234.151:5984",
+    "urlnohttp" : "45.113.234.151:5984",
+    "couch_liveability":"liveability"
+}

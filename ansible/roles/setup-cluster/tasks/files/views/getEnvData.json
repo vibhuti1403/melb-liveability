@@ -1,0 +1,8 @@
+{
+    "_id": "_design/getEnvData",
+    "views": {
+        "getEnvData":{
+            "map":"function(doc){emit(doc.properties_postcode, {bbox:doc.bbox , activities:doc.properties_main_activities})}"
+        }
+    }
+}

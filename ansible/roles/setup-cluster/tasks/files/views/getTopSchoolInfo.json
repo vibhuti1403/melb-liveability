@@ -1,0 +1,8 @@
+{
+    "_id": "_design/getTopSchoolInfo",
+    "views": {
+        "getTopSchoolInfo":{
+            "map":"function(doc){emit(doc.Postcode,{ses:doc['State Overall Score'],school_name:doc['School'],enrollments:doc['Total Enrolments'],sector:doc.Sector,properties_lat:doc.properties_lat,properties_long:doc.properties_long} )}"
+        }
+    }
+}

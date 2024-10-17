@@ -1,0 +1,27 @@
+{
+  "Education": {
+    "Negative": 4657,
+    "Neutral": 3527,
+    "Positive": 9153
+  },
+  "Entertainment": {
+    "Negative": 16226,
+    "Neutral": 9394,
+    "Positive": 60502
+  },
+  "Health care": {
+    "Negative": 10195,
+    "Neutral": 1999,
+    "Positive": 7358
+  },
+  "Housing": {
+    "Negative": 3901,
+    "Neutral": 3076,
+    "Positive": 6598
+  },
+  "Environment": {
+    "Negative": 2796,
+    "Neutral": 2705,
+    "Positive": 5381
+  }
+}

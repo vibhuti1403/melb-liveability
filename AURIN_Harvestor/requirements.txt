@@ -1,0 +1,8 @@
+requests==2.27.1
+couchdb==1.2
+pandas
+xlrd
+openpyxl
+geopy
+Nominatim
+sklearn

@@ -1,0 +1,30 @@
+- name: Copy Git SSH key to instances
+  copy:
+    src: "config/githubKey.pem"
+    dest: "~/.ssh/githubKey"
+    owner: "ubuntu"
+    group: "ubuntu"
+    mode: 0600
+
+- name: Add key to ssh agent
+  become: yes
+  shell: |
+    eval "$(ssh-agent)"
+    ssh-add /home/ubuntu/.ssh/githubKey
+
+- name: Create project directory
+  become: yes
+  file:
+    path: /home/ubuntu/project
+    owner: ubuntu
+    group: ubuntu
+    mode: 0770
+    recurse: yes
+    state: directory
+
+- name: Clone Project repository
+  become: yes
+  shell: git clone git@gitlab.unimelb.edu.au:rgiri/assignment2-comp90024.git --config core.sshCommand="ssh -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/githubKey"
+  args:
+    chdir: '/home/ubuntu/project'
+

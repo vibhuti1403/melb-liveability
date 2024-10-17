@@ -1,0 +1,180 @@
+# ****************************** Security group ******************************
+security_groups:
+  - name: instance1-security-group
+    description: "security group for instance 1"
+  - name: instance2-security-group
+    description: "security group for instance 2"
+  - name: instance3-security-group
+    description: "security group for instance 3"
+  - name: instance4-security-group
+    description: "security group for instance 4"
+
+security_group_rules:
+  - name: instance1-security-group
+    protocol: tcp
+    port_range_min: 22
+    port_range_max: 22
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance2-security-group
+    protocol: tcp
+    port_range_min: 22
+    port_range_max: 22
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance3-security-group
+    protocol: tcp
+    port_range_min: 22
+    port_range_max: 22
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance4-security-group
+    protocol: tcp
+    port_range_min: 22
+    port_range_max: 22
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance1-security-group
+    protocol: tcp
+    port_range_min: 80
+    port_range_max: 80
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance2-security-group
+    protocol: tcp
+    port_range_min: 80
+    port_range_max: 80
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance3-security-group
+    protocol: tcp
+    port_range_min: 80
+    port_range_max: 80
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance4-security-group
+    protocol: tcp
+    port_range_min: 80
+    port_range_max: 80
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance1-security-group
+    protocol: tcp
+    port_range_min: 1313
+    port_range_max: 1313
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance2-security-group
+    protocol: tcp
+    port_range_min: 1313
+    port_range_max: 1313
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance3-security-group
+    protocol: tcp
+    port_range_min: 1313
+    port_range_max: 1313
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance4-security-group
+    protocol: tcp
+    port_range_min: 1313
+    port_range_max: 1313
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance1-security-group
+    protocol: tcp
+    port_range_min: 5984
+    port_range_max: 5984
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance2-security-group
+    protocol: tcp
+    port_range_min: 5984
+    port_range_max: 5984
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance3-security-group
+    protocol: tcp
+    port_range_min: 5984
+    port_range_max: 5984
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance4-security-group
+    protocol: tcp
+    port_range_min: 5984
+    port_range_max: 5984
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance1-security-group
+    protocol: tcp
+    port_range_min: 4369
+    port_range_max: 4369
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance2-security-group
+    protocol: tcp
+    port_range_min: 4369
+    port_range_max: 4369
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance3-security-group
+    protocol: tcp
+    port_range_min: 4369
+    port_range_max: 4369
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance4-security-group
+    protocol: tcp
+    port_range_min: 4369
+    port_range_max: 4369
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance1-security-group
+    protocol: tcp
+    port_range_min: 9100
+    port_range_max: 9100
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance2-security-group
+    protocol: tcp
+    port_range_min: 9100
+    port_range_max: 9100
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance3-security-group
+    protocol: tcp
+    port_range_min: 9100
+    port_range_max: 9100
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance4-security-group
+    protocol: tcp
+    port_range_min: 9100
+    port_range_max: 9100
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance1-security-group
+    protocol: tcp
+    port_range_min: 5000
+    port_range_max: 5000
+    remote_ip_prefix: 0.0.0.0/0
+  - name: instance1-security-group
+    protocol: tcp
+    port_range_min: 3000
+    port_range_max: 3000
+    remote_ip_prefix: 0.0.0.0/0
+
+# ****************************** Volume ******************************
+volumes:
+  - vol_name: instance1-volume
+    vol_size: 60
+    device: /dev/vdb
+    mountpoint: /data
+  - vol_name: instance2-volume
+    vol_size: 60
+    device: /dev/vdb
+    mountpoint: /data
+  - vol_name: instance3-volume
+    vol_size: 60
+    device: /dev/vdb
+    mountpoint: /data
+  - vol_name: instance4-volume
+    vol_size: 60
+    device: /dev/vdb
+    mountpoint: /data
+
+# ****************************** Instance ******************************
+instances:
+  - name: instance1
+    security_groups: instance1-security-group
+    volume_ids: '{ instance1_volumes|default([]) }'
+    volumes: ['instance1-volume']
+  - name: instance2
+    security_groups: instance2-security-group
+    volume_ids: '{ instance2_volumes|default([]) }'
+    volumes: ['instance2-volume']
+  - name: instance3
+    security_groups: instance3-security-group
+    volume_ids: '{ instance3_volumes|default([]) }'
+    volumes: ['instance3-volume']
+  - name: instance4
+    security_groups: instance4-security-group
+    volume_ids: '{ instance4_volumes|default([]) }'
+    volumes: ['instance4-volume']

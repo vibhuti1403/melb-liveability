@@ -1,0 +1,24 @@
+- name: Update CouchDB masternode url
+  become: yes
+  replace:
+    dest: /home/ubuntu/project/assignment2-comp90024/Harvester_T/.envdb
+    regexp: 'http:\/\/[0-9]+(?:\.[0-9]+){3}:[0-9]+'
+    replace: "http://{{groups['masternode'][0]}}:{{couchdb_port}}"
+- name: Update hostname to env
+  become: yes
+  shell: |
+    export hostname=$(hostname)
+    cp -f /home/ubuntu/project/assignment2-comp90024/Harvester_T/configs/${hostname}.env /home/ubuntu/project/assignment2-comp90024/Harvester_T/.env
+
+- name: Build docker image
+  become: yes
+  command: 'docker build -f Dockerfile.tweetHarvestor -t tweet_harvestor .'
+  args:  
+    chdir: /home/ubuntu/project/assignment2-comp90024/Harvester_T
+
+- name: Run docker image
+  become: yes
+  command: docker run -d tweet_harvestor
+
+
+

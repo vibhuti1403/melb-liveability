@@ -1,0 +1,23 @@
+- name: Update CouchDB masternode url
+  become: yes
+  replace:
+    dest: /home/ubuntu/project/assignment2-comp90024/React-Docker/.env
+    regexp: 'REACT_APP_URL=http:\/\/[0-9]+(?:\.[0-9]+){3}:[0-9]+'
+    replace: "REACT_APP_URL=http://{{groups['masternode'][0]}}:{{couchdb_port}}"  
+
+- name: Update Flask Server URL
+  become: yes
+  replace:
+    dest: /home/ubuntu/project/assignment2-comp90024/React-Docker/.env
+    regexp: 'REACT_APP_URL_FLASK=http:\/\/[0-9]+(?:\.[0-9]+){3}:[0-9]+'
+    replace: "REACT_APP_URL_FLASK=http://{{groups['masternode'][0]}}:5000"
+
+- name: Build docker image
+  become: yes
+  command: 'docker build -t react_ui .'
+  args:  
+    chdir: /home/ubuntu/project/assignment2-comp90024/React-Docker
+
+- name: Run docker image
+  become: yes
+  command: docker run -itd -p 3000:3000 -d react_ui

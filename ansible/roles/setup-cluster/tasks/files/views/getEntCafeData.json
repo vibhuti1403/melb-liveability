@@ -1,0 +1,8 @@
+{
+    "_id": "_design/getEntCafeData",
+    "views": {
+        "getEntCafeData":{
+            "map":"function(doc){emit(doc.post_code, {properties_lat:doc.properties_lat,properties_long:doc.properties_long, properties_trading_name:doc.properties_trading_name,seats:doc.properties_number_of_seats})}"
+        }
+    }
+}

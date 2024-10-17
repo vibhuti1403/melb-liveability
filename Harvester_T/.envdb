@@ -1,0 +1,3 @@
+DBuser='couchdb'
+DBpwd='couchdb'
+DBurl = 'http://115.146.94.21:5984/'

@@ -1,0 +1,8 @@
+{
+   "_id":"_design/liveability",
+   "views":{
+      "liveabilityView":{
+         "map":"function (doc) {\n  emit(doc.key, doc);\n}"
+      }
+   }
+}

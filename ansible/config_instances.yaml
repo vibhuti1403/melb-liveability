@@ -1,0 +1,24 @@
+- hosts: localhost
+  gather_facts: true
+  roles:
+    - role: add-key
+
+- hosts: instances
+  vars_files:
+    - host_vars/deploy.yaml
+    - host_vars/instances.yaml
+    - host_vars/couchDB.yaml
+  gather_facts: true
+  roles:
+     - role: add-proxy
+     - role: install-dependencies
+     - role: install-docker
+     - role: mount-volumes
+     - role: install-couchDB
+
+- hosts: masternode
+  vars_files:
+   - host_vars/couchDB.yaml
+  gather_facts: true
+  roles:
+    - role: setup-cluster

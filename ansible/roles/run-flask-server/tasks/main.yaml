@@ -1,0 +1,17 @@
+- name: Update CouchDB masternode url
+  become: yes
+  replace:
+    dest: /home/ubuntu/project/assignment2-comp90024/API_Handler/.envdb_api
+    regexp: '[0-9]+(?:\.[0-9]+){3}:[0-9]+'
+    replace: "{{groups['masternode'][0]}}:{{couchdb_port}}"
+
+- name: Build docker image
+  become: yes
+  command: 'docker build -t flask_server .'
+  args:  
+    chdir: /home/ubuntu/project/assignment2-comp90024/API_Handler
+
+- name: Run docker image
+  become: yes
+  command: docker run -p 5000:5000 -d flask_server
+  

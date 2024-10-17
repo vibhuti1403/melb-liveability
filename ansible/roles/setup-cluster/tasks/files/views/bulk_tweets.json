@@ -1,0 +1,9 @@
+{
+    "_id":"_design/sentiment_view_bulk_tweets",
+    "views":{
+       "sentiment_bulk_tweets":{
+          "reduce":"_count",
+          "map":"function (doc) {\n  if(doc.category)\n    {emit([doc.category+\"_\"+doc.sentiment]);}\n}"
+       }
+    }
+ }
